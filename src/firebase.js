@@ -15,3 +15,4 @@ const databaseRef = firebase.database().ref();
 export const loanRef = databaseRef.child("loan")
 export const formRef = databaseRef.child("form")
 export const industryRef = databaseRef.child("industry")
+export const userRef = databaseRef.child("user")

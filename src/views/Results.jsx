@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { makeStyles, Typography, Box, Paper, Dialog, Button, DialogTitle, DialogContent } from '@material-ui/core';
+import { makeStyles, Typography, Box, Paper, Dialog, Button, DialogTitle, DialogContent, Card, CardContent } from '@material-ui/core';
 import { formRef, industryRef } from '../firebase'
 import { useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2'
@@ -31,58 +31,38 @@ const useStyles = makeStyles((theme) => ({
     },
     recommendationHeader: {
         padding: 50,
-        fontFamily: 'AirbnbCereal-Medium',
-        fontSize: 25,
+        paddingBottom: 30,
+        fontFamily: 'AirbnbCereal-Bold',
+        fontSize: 22,
         textTransform: 'uppercase',
-        textDecoration: 'underline'
     },
     recommendations: {
-        width: '60%',
+        width: '100%',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-around',
     },
     paper: {
+        minHeight: 200,
         width: '30%',
+        height: '100%',
         borderRadius: 0,
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
         boxShadow: '3px 3px 10px 0px rgba(0,0,0,0.2);',
-        position: 'relative',
         height: '100%',
         padding: 0,
         '&:hover': {
-            boxShadow: '7px 7px 10px 0px rgba(0,0,0,0.7);',
-        },
-    },
-    overlay: {
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        height: '100%',
-        width: '100%',
-        opacity: 0,
-        transition: '.5s ease',
-        backgroundColor: 'rgba(0,0,0,0.7)',
-        '&:hover': {
-            cursor: 'default',
-            opacity: 1,
-            cursor: 'pointer'
+            boxShadow: '7px 7px 15px 0px rgba(0,0,0,0.2);',
         },
     },
     cardContent: {
-        position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
     },
     text: {
-        fontFamily: 'AirbnbCereal-Book',
+        fontFamily: 'AirbnbCereal-Medium',
         fontWeight: '500',
-        color: '#fff',
+        color: '#474747',
         fontSize: 18,
     },
 }));
@@ -112,6 +92,13 @@ const Results = () => {
                 let data = Object.values(snapshot.val())[0]
                 console.log(data)
                 setState(data.state)
+
+                // let recommendations = await Axios.post('https://l7yqrqr9w7.execute-api.ap-southeast-1.amazonaws.com/default/personalize', {
+                //     data: data.state
+                // }).then(res => res.data)
+
+                // console.log(recommendations)
+
                 industryRef.on("value", snapshot => {
                     if (snapshot.val() != null) {
                         let ind = Object.values(snapshot.val())
@@ -164,6 +151,9 @@ const Results = () => {
 
     return (
         <div className={classes.root}>
+            <div style={{ paddingBottom: 75, fontFamily: 'AirbnbCereal-Bold', fontSize: 30, textDecoration: 'underline' }}>
+                Summary Report
+            </div>
             <div className={classes.chartWrapper}>
                 <div>
                     <h2>STAGE 1</h2>
@@ -197,16 +187,13 @@ const Results = () => {
                         {
                             recommendedServices.map(item => {
                                 return (
-                                    <Paper className={classes.paper} onClick={() => handleOpen(item)}>
-                                        <img src={item.src} style={{ objectFit: 'cover', width: '100%', height: 200, verticalAlign: 'top' }} />
-                                        <Box className={classes.overlay}>
-                                            <Box className={classes.cardContent}>
-                                                <Typography className={classes.text}>
-                                                    {item.name}
-                                                </Typography>
-                                            </Box>
-                                        </Box>
-                                    </Paper>
+                                    <Card key={item.name} className={classes.paper} onClick={() => handleOpen(item)}>
+                                        <CardContent>
+                                            <Typography className={classes.text}>
+                                                {item.name}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
                                 )
                             })
                         }

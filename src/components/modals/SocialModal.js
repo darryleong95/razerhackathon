@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const SocialModal = (props) => {
-    const { open, close } = props
+    const { open, close, setBusinessInfo, businessInfo } = props
     const classes = useStyles()
     return (
         <Dialog open={open} onClose={close} aria-labelledby="form-dialog-title">
@@ -37,6 +37,11 @@ const SocialModal = (props) => {
                     type="text"
                     fullWidth
                     variant='outlined'
+                    value={businessInfo.linkedIn}
+                    onChange={(e) => setBusinessInfo({
+                        ...businessInfo,
+                        linkedIn: e.target.value
+                    })}
                     InputLabelProps={{
                         shrink: true,
                     }}
@@ -50,6 +55,11 @@ const SocialModal = (props) => {
                     type="text"
                     fullWidth
                     variant='outlined'
+                    value={businessInfo.facebook}
+                    onChange={(e) => setBusinessInfo({
+                        ...businessInfo,
+                        facebook: e.target.value
+                    })}
                     InputLabelProps={{
                         shrink: true,
                     }}
@@ -63,6 +73,11 @@ const SocialModal = (props) => {
                     type="text"
                     fullWidth
                     variant='outlined'
+                    value={businessInfo.instagram}
+                    onChange={(e) => setBusinessInfo({
+                        ...businessInfo,
+                        instagram: e.target.value
+                    })}
                     InputLabelProps={{
                         shrink: true,
                     }}
@@ -76,6 +91,11 @@ const SocialModal = (props) => {
                     type="text"
                     fullWidth
                     variant='outlined'
+                    value={businessInfo.twitter}
+                    onChange={(e) => setBusinessInfo({
+                        ...businessInfo,
+                        twitter: e.target.value
+                    })}
                     InputLabelProps={{
                         shrink: true,
                     }}

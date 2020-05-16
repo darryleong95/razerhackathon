@@ -115,12 +115,24 @@ const DigitalisationForm = () => {
             }, 200)
         } else {
             // save submission data
+
+            // let activities = stage1.concat(stage2).concat(stage3)
+            // let selected = []
+            // for (let i = 0; i < activities.length; i++) {
+            //     for (let j = 0; j < Object.keys(state).length; j++) {
+            //         if (activities[i] === Object.keys(state)[j]) {
+            //             selected.push(i)
+            //         }
+            //     }
+            // }
+
+
             formRef.push().set({
                 industry,
                 numEmployees,
                 operatingRevenue,
                 digitalisationStage,
-                state,
+                state: state,
             }).then(() => {
                 history.push('/digitalisation-form/submit')
             }).catch(error => {
@@ -223,9 +235,6 @@ const DigitalisationForm = () => {
                                 />
                                 <FormControlLabel classes={{ label: classes.label }} value={'1'}
                                     control={<Radio style={{ color: '#4fc234' }} />} label="I have not attempted digitalisation in my company"
-                                />
-                                <FormControlLabel classes={{ label: classes.label }} value={'2'}
-                                    control={<Radio style={{ color: '#4fc234' }} />} label="I am in the process of digitalising my company"
                                 />
                             </RadioGroup>
                         </FormControl>

@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const BusinessInformationForm = (props) => {
-    const { num, setSocial } = props
+    const { num, setSocial, setBusinessInfo, businessInfo } = props
     const classes = useStyles()
     const [value, setValue] = useState('no');
 
@@ -60,18 +60,54 @@ const BusinessInformationForm = (props) => {
             (num === 1 || num === 2) && classes.left,
         )}>
             <div className={classes.header}>Company Information</div>
-            <TextField variant="outlined" className={classes.input} label="Company name" InputLabelProps={{
-                shrink: true,
-            }} />
-            <TextField variant='outlined' className={classes.input} label="Company Corp Pass ID" InputLabelProps={{
-                shrink: true,
-            }} />
-            <TextField variant='outlined' className={classes.input} label="Company Registration Date" InputLabelProps={{
-                shrink: true,
-            }} />
-            <TextField variant='outlined' className={classes.input} label="Company Registration City" InputLabelProps={{
-                shrink: true,
-            }} />
+            <TextField
+                value={businessInfo.name}
+                onChange={(e) => setBusinessInfo({
+                    ...businessInfo,
+                    name: e.target.value
+                })}
+                variant="outlined"
+                className={classes.input}
+                label="Company name"
+                InputLabelProps={{
+                    shrink: true,
+                }} />
+            <TextField
+                value={businessInfo.corpId}
+                onChange={(e) => setBusinessInfo({
+                    ...businessInfo,
+                    corpId: e.target.value
+                })}
+                variant='outlined'
+                className={classes.input}
+                label="Company Corp Pass ID"
+                InputLabelProps={{
+                    shrink: true,
+                }} />
+            <TextField
+                value={businessInfo.regDate}
+                onChange={(e) => setBusinessInfo({
+                    ...businessInfo,
+                    regDate: e.target.value
+                })}
+                variant='outlined'
+                className={classes.input}
+                label="Company Registration Date"
+                InputLabelProps={{
+                    shrink: true,
+                }} />
+            <TextField
+                value={businessInfo.city}
+                onChange={(e) => setBusinessInfo({
+                    ...businessInfo,
+                    city: e.target.value
+                })}
+                variant='outlined'
+                className={classes.input}
+                label="Company Registration City"
+                InputLabelProps={{
+                    shrink: true,
+                }} />
             <FormControl className={classes.input} component="fieldset">
                 <FormLabel style={{ fontFamily: 'AirbnbCereal-Book', width: '100%', textAlign: 'left', color: '#2d2d2d', paddingBottom: 10 }} component="legend">
                     My Business is customer facing

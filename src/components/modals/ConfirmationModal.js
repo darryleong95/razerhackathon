@@ -1,6 +1,6 @@
 import React from 'react'
 import { Dialog, DialogContent, makeStyles, DialogTitle, Button } from '@material-ui/core'
-import { useHistory } from 'react-router';
+import moment from 'moment'
 
 const useStyles = makeStyles((theme) => ({
     confirmationText: {
@@ -16,9 +16,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ConfirmationModal = (props) => {
-    const { open, close } = props
+    const { open, close, confirm, businessInfo, requestInfo } = props
     const classes = useStyles()
-    const history = useHistory()
+
+    const getAbsoluteMonths = (momentDate) => {
+        var months = Number(momentDate.format("MM"));
+        var years = Number(momentDate.format("YYYY"));
+        return months + (years * 12);
+    }
+
 
     return (
         <Dialog open={open} onClose={close} aria-labelledby="form-dialog-title">
@@ -29,31 +35,22 @@ const ConfirmationModal = (props) => {
             </DialogTitle>
             <DialogContent style={{ paddingTop: 20 }}>
                 <div className={classes.confirmationText}>
-                    Company Name: <span className={classes.confirmationSubtext}>Cafe De Luna</span>
+                    Company Name: <span className={classes.confirmationSubtext}>{businessInfo.name}</span>
                 </div>
                 <div className={classes.confirmationText}>
-                    Company Age: <span className={classes.confirmationSubtext}>3 Year 4 Months</span>
+                    Company Age: <span className={classes.confirmationSubtext}>{getAbsoluteMonths(moment()) - getAbsoluteMonths(moment(businessInfo.regDate))} Months</span>
                 </div>
                 <div className={classes.confirmationText}>
-                    Loan Term: <span className={classes.confirmationSubtext}>$20,000 / 1 Year</span>
+                    Loan Term: <span className={classes.confirmationSubtext}>${requestInfo.amount}/ 1 Year</span>
                 </div>
                 <div className={classes.confirmationText}>
-                    Loan Payables: <span className={classes.confirmationSubtext}>Cafe De Luna</span>
-                </div>
-                <div className={classes.confirmationText}>
-                    Receivables: <span className={classes.confirmationSubtext}>SGD 190,000</span>
-                </div>
-                <div className={classes.confirmationText}>
-                    Reason for Loan: <span className={classes.confirmationSubtext}>Financing of Short Term liabilities</span>
+                    Reason for Loan: <span className={classes.confirmationSubtext}>{requestInfo.allocation}</span>
                 </div>
                 <div style={{ marginTop: 40, marginBottom: 20 }}>
                     <Button onClick={close} variant='contained' style={{ marginRight: 10 }}>
                         Cancel
                     </Button>
-                    <Button onClick={() => {
-                        close()
-                        history.push('/home')
-                    }} variant='contained' style={{ backgroundColor: '#4fc234', color: 'white' }}>
+                    <Button onClick={confirm} variant='contained' style={{ backgroundColor: '#4fc234', color: 'white' }}>
                         Confim
                     </Button>
                 </div>

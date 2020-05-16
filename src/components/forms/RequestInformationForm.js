@@ -49,12 +49,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RequestInformationForm = (props) => {
-    const { num } = props
+    const { num, setRequestInfo, requestInfo } = props
     const classes = useStyles()
     const [value, setValue] = useState('shutdown');
+    const [selectedFile, setSelectedFile] = useState(null)
 
     const handleChange = (event) => {
         setValue(event.target.value);
+    };
+
+    const onFileChange = event => {
+        setSelectedFile(event.target.files[0])
+
     };
 
     return (
@@ -65,12 +71,35 @@ const RequestInformationForm = (props) => {
             num === 2 && classes.left
         )}>
             <div className={classes.header}>Loan Request Details</div>
-            <TextField type="number" placeholder="7,500" variant="outlined" className={classes.input} label="Request Value (SGD)" InputLabelProps={{
-                shrink: true,
-            }} />
-            <TextField placeholder="Salaries: $5000, Rental: $2500 ..." rows={3} multiline variant='outlined' className={classes.input} label="Loan Allocation" InputLabelProps={{
-                shrink: true,
-            }} />
+            <TextField
+                value={requestInfo.amount}
+                onChange={(e) => setRequestInfo({
+                    ...requestInfo,
+                    amount: e.target.value
+                })}
+                type="number"
+                placeholder="7,500"
+                variant="outlined"
+                className={classes.input}
+                label="Request Value (SGD)"
+                InputLabelProps={{
+                    shrink: true,
+                }} />
+            <TextField
+                value={requestInfo.allocation}
+                onChange={(e) => setRequestInfo({
+                    ...requestInfo,
+                    allocation: e.target.value
+                })}
+                placeholder="Salaries: $5000, Rental: $2500 ..."
+                rows={3}
+                multiline
+                variant='outlined'
+                className={classes.input}
+                label="Loan Allocation"
+                InputLabelProps={{
+                    shrink: true,
+                }} />
             <FormControl className={classes.input} component="fieldset">
                 <FormLabel style={{ fontFamily: 'AirbnbCereal-Book', width: '100%', paddingBottom: 10, textAlign: 'left', color: '#2d2d2d' }} component="legend">
                     If the pandemic persists for 3 more months ...
@@ -82,6 +111,10 @@ const RequestInformationForm = (props) => {
                     <FormControlLabel classes={{ label: classes.label }} value="grow" control={<Radio style={{ color: '#4fc234' }} />} label="I would be able to grow my business" />
                 </RadioGroup>
             </FormControl>
+            <div style={{ paddingTop: 10, width: '80%', display: 'flex', alignItems: 'center', justifyContent: 'start' }}>
+                <span style={{ fontFamily: 'AirbnbCereal-Book', paddingRight: 10 }}>Previous FY Statement: </span>
+                <input type="file" onChange={onFileChange} />
+            </div>
         </div>
     )
 }
