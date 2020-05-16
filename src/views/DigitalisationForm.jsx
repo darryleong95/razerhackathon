@@ -6,6 +6,7 @@ import ConsultingImage from '../assets/images/consulting_monochromatic.png'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import { useHistory } from 'react-router';
 import { formRef, industryRef } from '../firebase'
+import { stage1, stage2, stage3 } from '../constants';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -136,20 +137,8 @@ const DigitalisationForm = () => {
         }
     }
 
-    const save = () => {
-        industryRef.push().set({
-            name: 'Food and Beverages',
-            stage1,
-            stage2,
-            stage3
-        })
-    }
-
     return (
         <div className={classes.root}>
-            {/* <button onClick={() => save()}>
-                asd
-            </button> */}
             <div className={classes.form}>
                 <img src={ConsultingImage} className={classes.image} />
                 <Slider className={classes.slider} {...settings} ref={slider}>
@@ -327,34 +316,5 @@ const DigitalisationForm = () => {
         </div >
     )
 }
-
-const stage1 = [
-    // stage 1
-    'Digital / Online Food Order',
-    'Digital Payment',
-    'e-Loyalty/ Customer Relationship Management',
-    'Automated Reservation',
-    'Wireless Self Collection',
-    'Queue Management (HRMS)',
-    'Kitchen Management (HRMS)',
-    'Fleet Management System',
-]
-const stage2 = [
-    // stage 2
-    'B2B e-Marketplace / e-Procurement',
-    'Data Analytics Platform',
-    'IoT-enabled Central Kitchen Management',
-]
-
-const stage3 = [
-    // stage 3
-    'Sensing / Video Analytics for Restaurant Observation',
-    'Immersive Training using AR / VR',
-    'Predictive Ordering System powered by AI',
-    'F&B Preparation / Cooking Robot',
-    'Farm-to-Fork Food Trust Assurance',
-    'Restaurant Layout Optimisation using AR / VR',
-]
-
 
 export default DigitalisationForm

@@ -3,10 +3,9 @@ import { makeStyles, Typography, Box, Paper, Dialog, Button, DialogTitle, Dialog
 import { formRef, industryRef } from '../firebase'
 import { useEffect } from 'react';
 import { Doughnut } from 'react-chartjs-2'
-import queue from '../assets/images/queue.png'
-import kitchen from '../assets/images/kitchen.png'
-import web from '../assets/images/web.png'
 import { useHistory } from 'react-router';
+import { backgroundColor, hoverBackgroundColor, labels, recommendedServices } from '../constants'
+import AppointmentModal from '../components/modals/AppointmentModal';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -86,18 +85,6 @@ const useStyles = makeStyles((theme) => ({
         color: '#fff',
         fontSize: 18,
     },
-
-    // confirmation 
-    confirmationText: {
-        paddingTop: 20,
-        paddingBottom: 20,
-        fontSize: 17,
-        fontFamily: 'AirbnbCereal-Book'
-    },
-    confirmationSubtext: {
-        fontFamily: 'AirbnbCereal-Medium',
-        paddingLeft: 10
-    }
 }));
 
 const Results = () => {
@@ -226,55 +213,9 @@ const Results = () => {
                     </div>
                 </div>
             </div>
-            {open && <Appointment open={open} close={() => setOpen(false)} item={selected} />}
+            {open && <AppointmentModal open={open} close={() => setOpen(false)} item={selected} />}
         </div>
     )
 }
-
-
-const Appointment = (props) => {
-    const { open, close, item } = props
-    const history = useHistory()
-    const classes = useStyles()
-
-    return (
-        <Dialog open={open} onClose={close} aria-labelledby="form-dialog-title">
-            <DialogTitle style={{ paddingBottom: 0 }} id="form-dialog-title">
-                <span style={{ fontSize: 20, fontFamily: 'AirbnbCereal-Medium', color: '#2a2a2a' }}>
-                    Make an appointment for:
-                </span>
-            </DialogTitle>
-            <DialogContent style={{ paddingTop: 20 }}>
-                <div className={classes.confirmationText}>
-                    <span className={classes.confirmationSubtext}>{item.name}</span>
-                </div>
-                <div style={{ marginTop: 40, marginBottom: 20 }}>
-                    <Button onClick={() => {
-                        close()
-                        alert('Your Request has been successfully made, your request is being processed. Our truted vendor will contact you within the next 3 working days')
-                        history.push('/home')
-                    }} variant='contained' style={{ backgroundColor: '#4fc234', color: 'white' }}>
-                        Confim
-                    </Button>
-                </div>
-            </DialogContent>
-        </Dialog>
-    )
-}
-
-const labels = ['Unfulfilled', 'Fulfilled']
-const backgroundColor = ['#dddddd', '#35a723']
-const hoverBackgroundColor = ['#dddddd', '#35a723']
-const recommendedServices = [{
-    name: 'Queue Management',
-    src: queue
-}, {
-    name: 'Kitchem Management',
-    src: kitchen
-}, {
-    name: 'B2B e-Marketplace / e-Procurement',
-    src: web
-}]
-
 
 export default Results

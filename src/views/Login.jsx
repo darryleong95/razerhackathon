@@ -109,22 +109,6 @@ const LoginForm = () => {
                         shrink: true,
                     }} />
                 </div>
-                {/* <div className={classes.input}>
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                checked={checked}
-                                style={{
-                                    color: '#40A628',
-                                    marginRight: 10
-                                }}
-                                onChange={() => setCheck(!checked)}
-                                inputProps={{ 'aria-label': 'primary checkbox' }}
-                            />
-                        }
-                        label={<span style={{ fontSize: 14 }}>I agree to the <span style={{ fontFamily: 'AirbnbCereal-Bold', color: '#40A628' }}>Privacy Policy</span> and the processing of my personal data</span>}
-                    />
-                </div> */}
             </div>
             <Button variant='contained' className={classes.button} onClick={() => history.push("/home")}>
                 Login

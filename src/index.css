@@ -13,13 +13,6 @@ code {
 }
 
 @font-face {
-  font-family: 'Quicksand';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./fonts/Quicksand-Regular.ttf'); 
-}
-
-@font-face {
   font-family: 'AirbnbCereal-Medium';
   font-style: normal;
   font-weight: 400;

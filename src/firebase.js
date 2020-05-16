@@ -12,7 +12,6 @@ var config = {
 firebase.initializeApp(config);
 
 const databaseRef = firebase.database().ref();
-// loan requests
 export const loanRef = databaseRef.child("loan")
 export const formRef = databaseRef.child("form")
 export const industryRef = databaseRef.child("industry")
