@@ -11,3 +11,60 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Quicksand-Regular.ttf'); 
+}
+
+@font-face {
+  font-family: 'AirbnbCereal-Medium';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/AirbnbCerealMedium.ttf'); 
+}
+
+@font-face {
+  font-family: 'AirbnbCereal-Book';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/AirbnbCerealBook.ttf'); 
+}
+
+@font-face {
+  font-family: 'AirbnbCereal-Bold';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/AirbnbCerealBold.ttf'); 
+}
+
+.modes {
+  margin-bottom: 1rem;
+}
+
+.button-container {
+  margin-bottom: 0.5rem;
+}
+
+.fade-enter .btn {
+  opacity: 0; 
+  transform: translateX(-100%);
+}
+.fade-enter-active .btn {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.fade-exit .btn {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.fade-exit-active .btn {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.fade-enter-active .btn,
+.fade-exit-active .btn {
+  transition: opacity 500ms, transform 500ms;
+}
