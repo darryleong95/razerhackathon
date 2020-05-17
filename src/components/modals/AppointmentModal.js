@@ -37,7 +37,7 @@ const AppointmentModal = (props) => {
                         alert('Your Request has been successfully made, your request is being processed. Our truted vendor will contact you within the next 3 working days')
                         history.push('/home')
                     }} variant='contained' style={{ backgroundColor: '#4fc234', color: 'white' }}>
-                        Confim
+                        Confirm
                     </Button>
                 </div>
             </DialogContent>
