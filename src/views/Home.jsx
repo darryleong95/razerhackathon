@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
     root: {
         height: '100vh',
         transition: 'background-color 1s',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        backgroundColor: '#f6f6f6'
     },
     titleWrapper: {
         position: 'absolute',

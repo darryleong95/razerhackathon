@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'center',
         backgroundSize: 'cover',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        backgroundColor: '#f6f6f6'
     },
     chartWrapper: {
         display: 'flex',
@@ -37,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
         textTransform: 'uppercase',
     },
     recommendations: {
-        width: '100%',
+        width: '70%',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -57,14 +58,16 @@ const useStyles = makeStyles((theme) => ({
             boxShadow: '7px 7px 15px 0px rgba(0,0,0,0.2);',
         },
     },
-    cardContent: {
-    },
     text: {
         fontFamily: 'AirbnbCereal-Medium',
         fontWeight: '500',
         color: '#474747',
         fontSize: 18,
     },
+    image: {
+        paddingTop: 40,
+        width: '40%',
+    }
 }));
 
 const Results = () => {
@@ -192,6 +195,7 @@ const Results = () => {
                                             <Typography className={classes.text}>
                                                 {item.name}
                                             </Typography>
+                                            <img src={item.src} className={classes.image} />
                                         </CardContent>
                                     </Card>
                                 )

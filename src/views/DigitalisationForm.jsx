@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundSize: 'cover'
+        backgroundColor: '#f6f6f6'
     },
     image: {
         position: 'absolute',

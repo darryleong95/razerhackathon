@@ -1,6 +1,6 @@
 import queue from './assets/images/queue.png'
-import kitchen from './assets/images/kitchen.png'
-import web from './assets/images/web.png'
+import kitchen2 from './assets/images/kitchen2.png'
+import b2b from './assets/images/b2b.png'
 
 export const labels = ['Unfulfilled', 'Fulfilled']
 export const backgroundColor = ['#dddddd', '#35a723']
@@ -10,10 +10,10 @@ export const recommendedServices = [{
     src: queue
 }, {
     name: 'Kitchen Management',
-    src: kitchen
+    src: kitchen2
 }, {
     name: 'B2B e-Marketplace / e-Procurement',
-    src: web
+    src: b2b
 }]
 
 export const stage1 = [

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         left: 0,
         right: 0,
-        overflow: 'hidden'
+        backgroundColor: '#f6f6f6'
     },
     form: {
         width: '60%',
