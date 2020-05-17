@@ -1,0 +1,10 @@
+{
+	"auth": {
+		"tbbt746d8e05": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	}
+}

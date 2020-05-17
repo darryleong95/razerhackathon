@@ -11,6 +11,7 @@ import FinancingForm from "./views/FinancingForm";
 import DigitalisationForm from "./views/DigitalisationForm";
 import Results from "./views/Results";
 import Signup from "./views/Signup";
+import { withAuthenticator } from 'aws-amplify-react'; // or 'aws-amplify-react-native';
 
 const App = () => {
   return (
@@ -56,4 +57,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default withAuthenticator(App);

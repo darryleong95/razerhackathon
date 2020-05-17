@@ -179,7 +179,7 @@ const Login = () => {
                     <div className={classes.tab} onMouseEnter={() => setHoverFin(true)} onMouseLeave={() => setHoverFin(false)} onClick={goFinance}>
                         <div className={classes.tabTitle}>Financing</div>
                         <div className={classes.image}>
-                            <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={_onReady} />
+                            <YouTube videoId="ww5Vt7LcdmU" opts={opts} onReady={_onReady} />
                         </div>
                         <div className={classes.textApply}>Click here to apply!</div>
                     </div>
