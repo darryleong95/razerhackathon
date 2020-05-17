@@ -5,11 +5,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Amplify from 'aws-amplify';
-import awsconfig from './aws-exports';
-
-Amplify.configure(awsconfig);
-
 ReactDOM.render(
   <BrowserRouter>
     <Route path="/" component={App} />
