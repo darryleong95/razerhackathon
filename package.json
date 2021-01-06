@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "aws-amplify": "^3.0.11",
     "aws-amplify-react": "^4.1.10",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcrypt": "^4.0.1",
     "bcryptjs": "^2.4.3",
     "chart.js": "^2.9.3",
